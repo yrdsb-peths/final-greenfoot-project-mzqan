@@ -19,7 +19,7 @@ public class MyWorld extends World
         super(600, 400, 1);
         
         Wizard wizard = new Wizard();
-        addObject(wizard, 300, 300);
+        addObject(wizard, 100, 100);
         
         Skeleton skeleton = new Skeleton();
     }

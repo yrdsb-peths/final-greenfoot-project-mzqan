@@ -17,7 +17,6 @@ public class Skeleton extends Actor
     public void act()
     {
         setImage(skull);
-        
         skull.scale(80,80);
     }
 }

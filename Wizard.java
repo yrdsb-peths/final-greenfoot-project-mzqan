@@ -9,19 +9,38 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Wizard extends Actor
 {
     GreenfootImage idle = new GreenfootImage("images/wizard_sprites/attack1.png");
-    //GreenfootImage[] attack = new GreenfootImage[15];
+    GreenfootImage[] attack = new GreenfootImage[16];
     
+    SimpleTimer animationTimer = new SimpleTimer();
     public Wizard() {
-        //for(int i = 2; i < 17;i++) {
-        //    attack[i] = new GreenfootImage("images/wizard_sprites/wizard_attack" + i + ".png");
-        //}
-        setImage(idle);
+        for(int i = 2; i < 16;i++) {
+            attack[i] = new GreenfootImage("images/wizard_sprites/attack" + i + ".png");
+            attack[i].rotate(90);
+            attack[i].scale(150,150);
+        }
         idle.rotate(90);
+        idle.scale(150,150);
+        setImage(idle);
+        setRotation(270);
+         
     }
     
+    /**
+     * Animate the wizard's attack
+     */
+    public void animateWizard() {
+        for (int i = 0; i < attack.length; i++) {
+            animationTimer.mark();
+            while (animationTimer.millisElapsed() < 100) {
+                setImage(attack[i]);
+                Greenfoot.delay(1);  // Delay for smooth animation
+            }
+        }
+        setImage(idle);
+    }
+        
     public void act()
-    {
-        setRotation(270);
+    {        
         
         if(Greenfoot.isKeyDown("up"))
         {
@@ -31,5 +50,10 @@ public class Wizard extends Actor
         {
             move(3);
         }
+        
+        if(Greenfoot.isKeyDown("d")) {
+            animateWizard();
+        }
+        
     }
 }
