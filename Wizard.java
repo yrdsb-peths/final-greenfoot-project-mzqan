@@ -1,19 +1,35 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Wizard here.
+ * The Wizard, our hero.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan Lee
+ * @version June 2023
  */
 public class Wizard extends Actor
 {
-    /**
-     * Act - do whatever the Wizard wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootImage idle = new GreenfootImage("images/wizard_sprites/attack1.png");
+    //GreenfootImage[] attack = new GreenfootImage[15];
+    
+    public Wizard() {
+        //for(int i = 2; i < 17;i++) {
+        //    attack[i] = new GreenfootImage("images/wizard_sprites/wizard_attack" + i + ".png");
+        //}
+        setImage(idle);
+        idle.rotate(90);
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        setRotation(270);
+        
+        if(Greenfoot.isKeyDown("up"))
+        {
+            move(-3);
+        }
+        else if(Greenfoot.isKeyDown("down"))
+        {
+            move(3);
+        }
     }
 }
