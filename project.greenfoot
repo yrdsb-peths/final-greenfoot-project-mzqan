@@ -1,12 +1,15 @@
 #Greenfoot project file
-class.MyWorld.image=Game_Backgroundd\ (1).jpg
+class.MyWorld.image=Game_Background.jpg
 class.Wizard.image=Wizard_Attack1.png
+dependency1.from=MyWorld
+dependency1.to=Wizard
+dependency1.type=UsesDependency
 editor.fx.0.height=1408
 editor.fx.0.width=2576
 editor.fx.0.x=-8
 editor.fx.0.y=-8
 height=1408
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=2
 project.charset=windows-1252
 publish.hasSource=false
