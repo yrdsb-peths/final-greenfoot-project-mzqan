@@ -15,6 +15,8 @@ public class Wizard extends Actor
         //for(int i = 2; i < 17;i++) {
         //    attack[i] = new GreenfootImage("images/wizard_sprites/wizard_attack" + i + ".png");
         //}
+        setImage(idle);
+        idle.rotate(90);
     }
     
     public void act()

@@ -22,6 +22,5 @@ public class MyWorld extends World
         addObject(wizard, 300, 300);
         
         Skeleton skeleton = new Skeleton();
-        addObject(skeleton, 200, 200);
     }
 }
