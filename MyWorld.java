@@ -20,5 +20,8 @@ public class MyWorld extends World
         
         Wizard wizard = new Wizard();
         addObject(wizard, 300, 300);
+        
+        Skeleton skeleton = new Skeleton();
+        addObject(skeleton, 200, 200);
     }
 }
