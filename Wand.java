@@ -10,7 +10,9 @@ public class Wand extends Actor
 {
     GreenfootImage wand = new GreenfootImage("images/wand.png");
     private static String shootKey = "d";
-    
+    private SimpleTimer cooldownTimer = new SimpleTimer();
+    private boolean cooldown = true;
+     
     public Wand() {
         setImage(wand);
         wand.scale(100,80);
@@ -18,7 +20,11 @@ public class Wand extends Actor
    
     public void act()
     {
+        cooldownTimer();
         followCursor();
+        if(Greenfoot.isKeyDown(shootKey) && cooldown){
+            shoot();
+        }
     }
  
     public void followCursor(){
@@ -27,5 +33,17 @@ public class Wand extends Actor
             turnTowards(mouse.getX(), mouse.getY());
         }
     }
-
+    
+    public void shoot(){
+        MagicAttack laser = new MagicAttack(getRotation());
+        getWorld().addObject(laser,300,400);
+        cooldown = false;
+        cooldownTimer.mark();
+    }
+    
+    public void cooldownTimer(){
+        if (cooldownTimer.millisElapsed() > 1000) {
+            cooldown = true;
+        }
+    }
 }

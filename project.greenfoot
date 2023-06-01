@@ -1,9 +1,10 @@
 #Greenfoot project file
 class.GameWorld.image=gamescreen.jpg
+class.MagicAttack.image=tempattack.png
 class.Skeleton.image=skull.png
 class.Wand.image=wand.png
-dependency1.from=Wand
-dependency1.to=MagicAttack
+dependency1.from=GameWorld
+dependency1.to=Wand
 dependency1.type=UsesDependency
 editor.fx.0.height=830
 editor.fx.0.width=1550
