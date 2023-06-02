@@ -45,4 +45,5 @@ public class Wand extends Actor
             cooldown = true;
         }
     }
+
 }

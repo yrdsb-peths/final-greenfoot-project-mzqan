@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MagicAttack extends Actor
+public class MagicAttack extends SmoothMover
 {
     GreenfootImage[] attack = new GreenfootImage[20];
     SimpleTimer animationTimer = new SimpleTimer();
@@ -14,11 +14,11 @@ public class MagicAttack extends Actor
     public MagicAttack(int rotation) {
         for(int i=0; i<6;i++) {
             attack[i] = new GreenfootImage("images/attack_sprites/attack" + (i+1) + ".png");
-            attack[i].scale(200,200);
+            attack[i].scale(80,23);
         }
         for(int i=6; i<20;i++) {
             attack[i] = new GreenfootImage("images/attack_sprites/attack6.png");
-            attack[i].scale(200,200);
+            attack[i].scale(80,23);
         }
         setImage(attack[0]);
         setRotation(rotation);
@@ -34,10 +34,21 @@ public class MagicAttack extends Actor
     }
     public void act()
     {
-        move(3);
+        move(4);
         if(getY() < 0){
             getWorld().removeObject(this);
         }
-        animateAttack();
+        else {
+            animateAttack();
+            kill();
+        }
+    }
+    
+    public void kill(){
+        if(isTouching(Skeleton.class)) {  
+            removeTouching(Skeleton.class);
+            GameWorld world = (GameWorld) getWorld();
+            world.spawnSkeleton();
+        }
     }
 }

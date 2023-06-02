@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
-
+    int score;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -22,6 +22,19 @@ public class GameWorld extends World
     
     public void prepare() {
         Wand wand = new Wand();
-        addObject(wand,getWidth()/2,getHeight());
+        addObject(wand,300,400);
+        spawnSkeleton();
+    }
+    
+     public void spawnSkeleton()
+    {
+        Skeleton skeleton = new Skeleton ();
+        addObject(skeleton, Greenfoot.getRandomNumber(600), 0);
+    }
+
+    public void gameOver()
+    {
+        GameOverWorld world = new GameOverWorld();
+        Greenfoot.setWorld(world);
     }
 }
