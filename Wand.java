@@ -15,7 +15,6 @@ public class Wand extends Actor
      
     public Wand() {
         setImage(wand);
-        wand.scale(100,80);
     }
    
     public void act()
