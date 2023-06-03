@@ -31,10 +31,4 @@ public class GameWorld extends World
         Skeleton skeleton = new Skeleton ();
         addObject(skeleton, Greenfoot.getRandomNumber(600), 0);
     }
-
-    public void gameOver()
-    {
-        GameOverWorld world = new GameOverWorld();
-        Greenfoot.setWorld(world);
-    }
 }
