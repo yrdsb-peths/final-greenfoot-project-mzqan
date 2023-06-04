@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PlayButton extends Actor
 {
     GreenfootImage play = new GreenfootImage("images/newgame0.png");
-    //GreenfootImage playHovered = new GreenfootImage("images/newgame1.png");
+    GreenfootImage playHovered = new GreenfootImage("images/newgame1.png");
     
     public PlayButton() {
         setImage(play);
@@ -17,14 +17,10 @@ public class PlayButton extends Actor
     
     public void act()
     {     
-        //if(Greenfoot.mouseMoved(this)){
-        //    setImage(playHovered);
-        //}
-        //else{
-        //    setImage(play);
-        //}
         if(Greenfoot.mouseClicked(this))
         {
+            setImage(playHovered);
+            Greenfoot.delay(10);
             World gameWorld = new GameWorld();
             Greenfoot.setWorld(gameWorld);
         }

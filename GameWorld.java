@@ -24,6 +24,8 @@ public class GameWorld extends World
         Wand wand = new Wand();
         addObject(wand,300,400);
         spawnSkeleton();
+        MagicPoints manabar = new MagicPoints(30);
+        addObject(manabar, 115, 20);
     }
     
      public void spawnSkeleton()

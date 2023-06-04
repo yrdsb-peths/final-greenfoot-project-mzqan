@@ -34,7 +34,7 @@ public class MagicAttack extends SmoothMover
     }
     public void act()
     {
-        move(4);
+        move(2);
         if(getY() < 0){
             getWorld().removeObject(this);
         }
