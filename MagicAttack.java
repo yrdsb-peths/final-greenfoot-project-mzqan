@@ -34,13 +34,14 @@ public class MagicAttack extends SmoothMover
     }
     public void act()
     {
-        move(2);
+        move(3);
         if(getY() < 0){
             getWorld().removeObject(this);
         }
         else {
             animateAttack();
             kill();
+            gainMP();
         }
     }
     
@@ -50,5 +51,13 @@ public class MagicAttack extends SmoothMover
             GameWorld world = (GameWorld) getWorld();
             world.spawnSkeleton();
         }
+    }
+    
+    public void gainMP(){
+       if(isTouching(Magic.class)) {  
+            removeTouching(Magic.class);
+            GameWorld world = (GameWorld) getWorld();
+            world.spawnMagic();
+        } 
     }
 }

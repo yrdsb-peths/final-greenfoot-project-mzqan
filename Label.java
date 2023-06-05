@@ -13,12 +13,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Label extends Actor
 {
+    public static final Color MYCOLOUR = new Color(123, 168, 176);
+    private static final Color transparent = new Color(0,0,0,0);
     private String value;
     private int fontSize;
-    private Color lineColor = Color.BLACK;
-    private Color fillColor = Color.WHITE;
+    //private Color lineColor = Color.WHITE;
+    //private Color fillColor = Color.BLACK;
+    private Color lineColor = Color.WHITE;
+    private Color fillColor = transparent;
     
-    private static final Color transparent = new Color(0,0,0,0);
 
     
     /**

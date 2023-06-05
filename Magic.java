@@ -1,21 +1,21 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Danger for our wizard.
+ * Write a description of class Magic here.
  * 
- * @author Megan 
- * @version June 2023
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class Skeleton extends SmoothMover
+public class Magic extends SmoothMover
 {
-    GreenfootImage skull = new GreenfootImage("images/skull.png");
+    GreenfootImage magic = new GreenfootImage("images/magic.png");
     /**
      * Act - do whatever the Skeleton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Skeleton() {
-        setImage(skull);
-        skull.scale(40,40);
+    public Magic() {
+        setImage(magic);
+        magic.scale(35,35);
     }
     public void act(){
         int x = getX();
@@ -28,5 +28,4 @@ public class Skeleton extends SmoothMover
             world.removeObject(this);
         }
     }
-    
 }
