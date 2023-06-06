@@ -10,7 +10,7 @@ public class InstructionsButton extends Actor
 
 {
     GreenfootImage instructions = new GreenfootImage("images/instructions0.png");
-    //GreenfootImage playHovered = new GreenfootImage("images/instructions1.png");
+    GreenfootImage instructionsHovered = new GreenfootImage("images/instructions1.png");
     
     public InstructionsButton() {
         setImage(instructions);
@@ -18,12 +18,13 @@ public class InstructionsButton extends Actor
     
     public void act()
     {     
-        //if(Greenfoot.mouseMoved(this)){
-        //    setImage(playHovered);
-        //}
-        //else{
-        //    setImage(play);
-        //}
+        
+        if(Greenfoot.mouseMoved(this)|| Greenfoot.mouseDragged(this)){
+            setImage(instructionsHovered);
+        }
+        else{
+            setImage(instructions);
+        }
         //if(Greenfoot.mouseClicked(this))
         //{
         //    World instructions = new instructionsWorld();
