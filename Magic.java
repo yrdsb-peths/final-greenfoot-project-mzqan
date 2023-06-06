@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Magic here.
+ * Magical orbs that provide 20 mana each.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan
+ * @version June 2023
  */
 public class Magic extends SmoothMover
 {

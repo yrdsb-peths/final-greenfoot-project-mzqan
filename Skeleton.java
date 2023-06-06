@@ -26,6 +26,7 @@ public class Skeleton extends SmoothMover
         if(getY() >= world.getHeight()) 
         {
             world.removeObject(this);
+            world.spawnSkeleton();
         }
     }
     

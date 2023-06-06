@@ -1,20 +1,34 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MagicPoints here.
+ * Manabar - our "ammo" for our wand.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan 
+ * @version June 2023
  */
 public class MagicPoints extends Actor
 {
-    GreenfootImage[] manabar = new GreenfootImage[6];
+    public double mana;
+    public int manablock;
+    GreenfootImage[] manabar = new GreenfootImage[11];
 
     public MagicPoints(int magic) {
-        for(int i=0; i<6;i++) {
+        for(int i=0; i<11;i++) {
             manabar[i] = new GreenfootImage("images/mana_bar/manabar" + i + ".png");
             manabar[i].scale(220,23);
         }
-        setImage(manabar[2]);
+        setImage(manabar[1]);
+    }
+    
+    public void act(){
+        GameWorld world = (GameWorld) getWorld();
+        mana = (world.getMana())/10;
+        if(mana - (int) mana >= 0.5) {
+            setImage(manabar[(int) mana +1]);
+        }
+        else {
+            setImage(manabar[(int) mana]);
+        }
+        
     }
 }

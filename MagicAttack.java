@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Our Wizard's attack - a laser?
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan
+ * @version June 2023
  */
 public class MagicAttack extends SmoothMover
 {
@@ -57,7 +57,7 @@ public class MagicAttack extends SmoothMover
        if(isTouching(Magic.class)) {  
             removeTouching(Magic.class);
             GameWorld world = (GameWorld) getWorld();
-            world.spawnMagic();
+            world.increaseMP();
         } 
     }
 }

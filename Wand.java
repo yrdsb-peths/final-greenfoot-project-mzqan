@@ -21,8 +21,16 @@ public class Wand extends Actor
     {
         cooldownTimer();
         followCursor();
+        
         if(Greenfoot.isKeyDown(shootKey) && cooldown){
-            shoot();
+            GameWorld world = (GameWorld) getWorld();
+            if(world.getMana() == 0) {
+                return;
+            }
+            else {
+              shoot();
+                world.decreaseMP();  
+            }
         }
     }
  
@@ -45,5 +53,4 @@ public class Wand extends Actor
             cooldown = true;
         }
     }
-
 }
