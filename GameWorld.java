@@ -11,6 +11,7 @@ public class GameWorld extends World
     int score;
     Label manabarPoints = new Label("MP: " + score, 23);
     private SimpleTimer respawnTimer  = new SimpleTimer();
+    private int respawnCD = 5;
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -19,6 +20,7 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false); 
+        respawnTimer.mark();
         prepare();
     }
     
@@ -29,7 +31,6 @@ public class GameWorld extends World
         MagicPoints manabar = new MagicPoints(30);
         addObject(manabar, 115, 35);
         addObject(manabarPoints, 115, 15);
-        spawnMagic();
     }
     
      public void spawnSkeleton()
@@ -38,13 +39,18 @@ public class GameWorld extends World
         addObject(skeleton, Greenfoot.getRandomNumber(600), 0);
     }
     
-    
     public void spawnMagic() {
-        respawnTimer.mark();
-        if(respawnTimer.millisElapsed() < 3000) {
+        if(respawnTimer.millisElapsed() % 1000 != respawnCD) {
             return;
         }
-        Magic magic = new Magic();
-        addObject(magic, Greenfoot.getRandomNumber(600), 0);
+        else {
+            respawnCD+=5;
+            Magic magic = new Magic();
+            addObject(magic, Greenfoot.getRandomNumber(600), 0);
+        }
+    }
+    
+    public void act(){
+        spawnMagic();
     }
 }
