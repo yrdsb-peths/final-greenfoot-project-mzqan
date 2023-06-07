@@ -8,8 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MagicPoints extends Actor
 {
-    public double mana;
-    public int manablock;
+    private int manaSection = 1;
     GreenfootImage[] manabar = new GreenfootImage[11];
 
     public MagicPoints(int magic) {
@@ -22,13 +21,12 @@ public class MagicPoints extends Actor
     
     public void act(){
         GameWorld world = (GameWorld) getWorld();
-        mana = (world.getMana())/10;
-        if(mana - (int) mana >= 0.5) {
-            setImage(manabar[(int) mana +1]);
+        if(world.getMana() % 10 >= 5) {
+            manaSection = (world.getMana() + (10 - (world.getMana() % 10)))/10;
         }
         else {
-            setImage(manabar[(int) mana]);
+            manaSection = world.getMana() / 10;
         }
-        
+        setImage(manabar[manaSection]);
     }
 }
