@@ -14,9 +14,11 @@ public class TitleScreen extends World
         super(600, 400, 1); 
         prepare();
     }
+    
     public void prepare() {
         PlayButton playBtn = new PlayButton();
         addObject(playBtn, 300, 255);
+        
         InstructionsButton instructionsBtn = new InstructionsButton();
         addObject(instructionsBtn, 300, 330);
     }

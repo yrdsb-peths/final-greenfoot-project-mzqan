@@ -16,8 +16,14 @@ public class PlayButton extends Actor
     }
     
     public void act()
-    {     
-        if(Greenfoot.mouseClicked(this))
+    {
+        if (Greenfoot.mouseMoved(this)) {
+            setImage(playHovered); // Change the image to playHovered when the mouse moves over the object
+        }
+        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) {
+            setImage(play); // Change the image back to play when the mouse moves away from the object
+        }
+        if (Greenfoot.mouseClicked(this))
         {
             setImage(playHovered);
             Greenfoot.delay(10);

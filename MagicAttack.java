@@ -57,7 +57,7 @@ public class MagicAttack extends SmoothMover
        if(isTouching(Magic.class)) {  
             removeTouching(Magic.class);
             GameWorld world = (GameWorld) getWorld();
-            world.increaseMP();
+            world.increaseMana();
         } 
     }
 }
