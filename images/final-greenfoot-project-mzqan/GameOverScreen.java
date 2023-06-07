@@ -20,11 +20,10 @@ public class GameOverScreen extends World
     }
     
     public void prepare() {
-        Label scoreLabel = new Label(GameWorld.getScore(), 50);
-        scoreLabel.setFillColor(Color.WHITE);
-        addObject(scoreLabel, 300, 220);
+        Label scoreLabel = new Label(GameWorld.getScore(), 100);
+        addObject(scoreLabel, 300, 200);
         
         BackToTitleButton backToTitleBtn = new BackToTitleButton();
-        addObject(backToTitleBtn, 300, 280);
+        addObject(backToTitleBtn, 300, 330);
     }
 }
