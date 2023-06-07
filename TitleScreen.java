@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Titlescreen: go to new game or instructions
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan
+ * @version June 2023
  */
 public class TitleScreen extends World
 {
