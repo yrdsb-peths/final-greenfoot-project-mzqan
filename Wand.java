@@ -29,7 +29,7 @@ public class Wand extends Actor
             }
             else {
               shoot();
-                world.decreaseMP();  
+                world.decreaseMana();  
             }
         }
     }
