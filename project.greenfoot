@@ -1,6 +1,6 @@
 #Greenfoot project file
 class.BackToTitleButton.image=backtotitle1.png
-class.GameOverScreen.image=gameover.png
+class.GameOverScreen.image=gameoverscreen.jpg
 class.GameWorld.image=gamescreen.jpg
 class.MagicAttack.image=tempattack.png
 class.Skeleton.image=skull.png

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class GameOverScreen here.
+ * Game Over Screen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan Lee
+ * @version June 2023
  */
 public class GameOverScreen extends World
 {
@@ -19,12 +19,13 @@ public class GameOverScreen extends World
         prepare();
     }
     
+    
     public void prepare() {
-        Label scoreLabel = new Label(GameWorld.getScore(), 50);
+        Label scoreLabel = new Label(GameWorld.getScore(), 35);
         scoreLabel.setFillColor(Color.WHITE);
-        addObject(scoreLabel, 300, 220);
+        addObject(scoreLabel, 308, 226);
         
         BackToTitleButton backToTitleBtn = new BackToTitleButton();
-        addObject(backToTitleBtn, 300, 280);
+        addObject(backToTitleBtn, 300, 300);
     }
 }

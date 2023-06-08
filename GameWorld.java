@@ -12,8 +12,12 @@ public class GameWorld extends World
     private boolean canSpawnMagic = true; // Flag to track magic spawning 
     private int mana = 10; //Initial manal value
     private static int score = 0;
+    private static int highscore =0;
     Label manabarPoints = new Label("MP: " + mana +"/100", 23); //Label to display mana
+    Label scoreLabel = new Label("Score: " + score, 23); //Label to display currentscore
+    Label highScoreLabel = new Label("High Score: " + highscore, 23); //Label to display highscore
 
+            
     /**
      * Constructor for objects of class GameWorld.
      * 
@@ -38,9 +42,13 @@ public class GameWorld extends World
         
         addObject(manabarPoints, 115, 15); //Add mana label to the world
         
+        addObject(scoreLabel, 520, 15); //Add score label to the world
+        
+        addObject(highScoreLabel, 502, 35); //Add high score label to the world
+        highScoreLabel.setValue("High Score: " + highscore);
         spawnSkeleton(); //Spawn a skeleton object in the world
     }
-    
+
     /**
      * Spawn a skeleton object in the world at a random x-coordinate.
      */
@@ -105,16 +113,26 @@ public class GameWorld extends World
      * End the game and switch to game over screen.
      */
     public void gameOver(){
+        
         World gameOverWorld = new GameOverScreen();
         Greenfoot.setWorld(gameOverWorld); 
     }
     
     public void increaseScore(){
         score++;
+        scoreLabel.setValue("Score: " + score);
+        if (score > highscore) {
+            highscore = score;
+        }
+        highScoreLabel.setValue("High Score: " + highscore);
     }
     
     public static int getScore(){
         return score;
+    }
+    
+    public static void setScore(){
+        score = 0;
     }
     
      /**
