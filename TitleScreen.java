@@ -22,4 +22,8 @@ public class TitleScreen extends World
         InstructionsButton instructionsBtn = new InstructionsButton();
         addObject(instructionsBtn, 300, 330);
     }
+    
+    public void act(){
+        GameWorld.setScore();
+    }
 }
