@@ -48,7 +48,10 @@ public class GameWorld extends World
         
         addObject(highScoreLabel, 499, 35); //Add high score label to the world
         highScoreLabel.setValue("High Score: " + highscore);
-        spawnSkeleton(); //Spawn a skeleton object in the world
+        
+        spawnSkeleton(); 
+        
+        spawnZombie(); 
     }
 
     /**
@@ -59,7 +62,16 @@ public class GameWorld extends World
         Skeleton skeleton = new Skeleton ();
         addObject(skeleton, Greenfoot.getRandomNumber(600), 0);
     }
-
+    
+    /**
+     * Spawn a zombie object in the world at a random x-coordinate.
+     */
+     public void spawnZombie()
+    {
+        Zombie zombie = new Zombie ();
+        addObject(zombie, Greenfoot.getRandomNumber(600), 0);
+    }
+    
     /**
      * Spawn a magic object in the world at a random x-coordinate, if allowed.
      * The magic object is only spawned if there are no existing magic objects in the world.
@@ -120,8 +132,8 @@ public class GameWorld extends World
         Greenfoot.setWorld(gameOverWorld); 
     }
     
-    public void increaseScore(){
-        score++;
+    public void increaseScore(int points){
+        score+=points;
         scoreLabel.setValue("Score: " + score);
         if (score > highscore) {
             highscore = score;
@@ -140,7 +152,6 @@ public class GameWorld extends World
     public static void setScore(){
         score = 0;
     }
-    
     
     public static int getLevel(){
         return level;
