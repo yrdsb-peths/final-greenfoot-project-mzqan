@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Skeleton extends SmoothMover
 {
     GreenfootImage skull = new GreenfootImage("images/skull.png");
+    private double speed;
     /**
      * Act - do whatever the Skeleton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,11 +19,13 @@ public class Skeleton extends SmoothMover
         skull.scale(40,40);
     }
     public void act(){
+        GameWorld world = (GameWorld) getWorld();
+        speed = 0.5 + (0.2*(world.getLevel()));
         int x = getX();
-        double y = getY() + 2;
+        double y = getY() + speed;
         setLocation(x, y);
         
-        GameWorld world = (GameWorld) getWorld();
+       
         if(getY() >= world.getHeight()) 
         {
             world.removeObject(this);

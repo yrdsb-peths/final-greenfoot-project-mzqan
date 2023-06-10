@@ -13,6 +13,8 @@ public class GameWorld extends World
     private int mana = 10; //Initial manal value
     private static int score = 0;
     private static int highscore =0;
+    private static int level = 1;
+    private int trackerLevel = 0;
     Label manabarPoints = new Label("MP: " + mana +"/100", 23); //Label to display mana
     Label scoreLabel = new Label("Score: " + score, 23); //Label to display currentscore
     Label highScoreLabel = new Label("High Score: " + highscore, 23); //Label to display highscore
@@ -44,7 +46,7 @@ public class GameWorld extends World
         
         addObject(scoreLabel, 520, 15); //Add score label to the world
         
-        addObject(highScoreLabel, 502, 35); //Add high score label to the world
+        addObject(highScoreLabel, 499, 35); //Add high score label to the world
         highScoreLabel.setValue("High Score: " + highscore);
         spawnSkeleton(); //Spawn a skeleton object in the world
     }
@@ -125,6 +127,10 @@ public class GameWorld extends World
             highscore = score;
         }
         highScoreLabel.setValue("High Score: " + highscore);
+        if((score / 10) > trackerLevel) {
+            level+=1;
+            trackerLevel+=1;
+        }
     }
     
     public static int getScore(){
@@ -135,6 +141,11 @@ public class GameWorld extends World
         score = 0;
     }
     
+    
+    public static int getLevel(){
+        return level;
+    }
+
      /**
      * Act method for the world.
      * Called automatically by the Greenfoot framework.
