@@ -36,7 +36,7 @@ public class Wand extends Actor
  
     public void followCursor(){
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        if(mouse!=null && mouse.getY()<380){
+        if(mouse!=null && mouse.getY()<400){
             turnTowards(mouse.getX(), mouse.getY());
         }
     }

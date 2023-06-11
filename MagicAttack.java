@@ -50,7 +50,7 @@ public class MagicAttack extends SmoothMover
             removeTouching(Skeleton.class);
             GameWorld world = (GameWorld) getWorld();
             world.spawnSkeleton();
-            world.increaseScore();
+            world.increaseScore(1);
         }
     }
     
