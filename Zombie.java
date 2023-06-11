@@ -21,7 +21,7 @@ public class Zombie extends SmoothMover
     }
     public void act(){
         GameWorld world = (GameWorld) getWorld();
-        speed = 0.5 + (0.2*(world.getLevel()));
+        speed = 0.5 + (0.1*(world.getLevel()));
         int x = getX();
         double y = getY() + speed;
         setLocation(x, y);

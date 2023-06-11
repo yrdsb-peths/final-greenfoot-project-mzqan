@@ -8,9 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
-    private SimpleTimer respawnTimer  = new SimpleTimer(); // Timer for respawning magic
+    private SimpleTimer respawnMagicTimer  = new SimpleTimer(); // Timer for respawning magic
+    private SimpleTimer respawnZombieTimer = new SimpleTimer();// Timer for respawning zombies
     private boolean canSpawnMagic = true; // Flag to track magic spawning 
-    private int mana = 10; //Initial manal value
+    private boolean canSpawnZombie = true; //Flag to track zombie spawning
+    private int mana = 25; //Initial manal value
     private static int score = 0;
     private static int highscore =0;
     private static int level = 1;
@@ -50,8 +52,6 @@ public class GameWorld extends World
         highScoreLabel.setValue("High Score: " + highscore);
         
         spawnSkeleton(); 
-        
-        spawnZombie(); 
     }
 
     /**
@@ -68,8 +68,17 @@ public class GameWorld extends World
      */
      public void spawnZombie()
     {
-        Zombie zombie = new Zombie ();
-        addObject(zombie, Greenfoot.getRandomNumber(600), 0);
+        if (!canSpawnZombie) {
+            return; // If magic cannot be spawned, exit the method
+        }
+        
+        if (getObjects(Zombie.class).isEmpty() && respawnZombieTimer.millisElapsed() >= 30000) {
+            // Only spawn zombie if there are no existing zombie objects in the world
+            Zombie zombie = new Zombie();
+            addObject(zombie, Greenfoot.getRandomNumber(600), 0);
+            canSpawnMagic = false; // Set the flag to prevent further spawning
+            respawnZombieTimer.mark(); // Reset the timer for the next spawn
+        }  
     }
     
     /**
@@ -87,7 +96,7 @@ public class GameWorld extends World
             Magic magic = new Magic();
             addObject(magic, Greenfoot.getRandomNumber(600), 0);
             canSpawnMagic = false; // Set the flag to prevent further spawning
-            respawnTimer.mark(); // Reset the timer for the next spawn
+            respawnMagicTimer.mark(); // Reset the timer for the next spawn
         }
     }
     
@@ -164,10 +173,23 @@ public class GameWorld extends World
      */
     public void act() {
         spawnMagic(); //Spawn magic object, if allowed.
-
+        
         // Check if enough time has passed for the flag to be reset
-        if (!canSpawnMagic && respawnTimer.millisElapsed() >= 10000) {
+        if (!canSpawnMagic && respawnMagicTimer.millisElapsed() >= 15000) {
             canSpawnMagic = true; // Reset the flag to allow spawning
+        }
+        
+        
+        // Spawn zombie every 30 seconds, starting from 30 seconds into the game
+        if (!canSpawnZombie && respawnZombieTimer.millisElapsed() >= 30000) {
+            canSpawnZombie = true; // Reset the flag to allow spawning
+        }
+
+        // Check if it's time to spawn a zombie
+        if (canSpawnZombie) {
+            spawnZombie();
+            canSpawnZombie = false; // Set the flag to prevent immediate spawning
+            respawnZombieTimer.mark(); // Reset the timer for the next spawn
         }
     }
 }
