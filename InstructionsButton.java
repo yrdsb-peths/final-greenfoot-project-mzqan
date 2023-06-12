@@ -38,8 +38,8 @@ public class InstructionsButton extends Actor
         {
             setImage(instructionsHovered);
             Greenfoot.delay(10);
-            //World instructionsWorld = new InstructionsWorld();
-            //Greenfoot.setWorld(instructionsWorld);
+            World instructionsWorld = new InstructionsScreen();
+            Greenfoot.setWorld(instructionsWorld);
         }
     }
 }
