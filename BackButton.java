@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BackButton extends Actor
 {
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
     GreenfootImage back = new GreenfootImage("images/back0.png"); //Image for the instructions button.
     GreenfootImage backHovered = new GreenfootImage("images/back1.png"); //Image for the instructions button when hovered.
     
@@ -34,6 +35,7 @@ public class BackButton extends Actor
         }
         if (Greenfoot.mouseClicked(this))
         {
+            buttonClick.play();
             setImage(backHovered);
             Greenfoot.delay(10);
             InstructionsScreen.switchBack();

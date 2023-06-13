@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class NextButton extends Actor
 {
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
     GreenfootImage next = new GreenfootImage("images/next0.png"); //Image for the instructions button.
     GreenfootImage nextHovered = new GreenfootImage("images/next1.png"); //Image for the instructions button when hovered.
     
@@ -34,6 +35,7 @@ public class NextButton extends Actor
         }
         if (Greenfoot.mouseClicked(this))
         {
+            buttonClick.play();
             setImage(nextHovered);
             Greenfoot.delay(10);
             InstructionsScreen.switchNext();
