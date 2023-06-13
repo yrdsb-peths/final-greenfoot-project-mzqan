@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BackToTitleButton extends Actor
 
 {
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
     GreenfootImage backToTitle = new GreenfootImage("images/backtotitle0.png"); //Image for the instructions button.
     GreenfootImage backToTitleHovered = new GreenfootImage("images/backtotitle1.png"); //Image for the instructions button when hovered.
     
@@ -35,6 +36,7 @@ public class BackToTitleButton extends Actor
         }
         if (Greenfoot.mouseClicked(this))
         {
+            buttonClick.play();
             setImage(backToTitleHovered);
             Greenfoot.delay(10);
             World titlescreen = new TitleScreen();

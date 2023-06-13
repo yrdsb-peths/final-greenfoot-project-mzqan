@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Zombie extends SmoothMover
 {
+    GreenfootSound death = new GreenfootSound("enemydeath.mp3");
     GreenfootImage zombie = new GreenfootImage("images/zombie2.png");
     private double speed;
     private int zombieHP=2;
@@ -39,6 +40,7 @@ public class Zombie extends SmoothMover
 
     public void getShot(){
         if(isTouching(MagicAttack.class)){
+            death.play();
             removeTouching(MagicAttack.class);
             zombieHP --;
             GameWorld world = (GameWorld) getWorld();

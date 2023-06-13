@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Wand extends Actor
 {
+    GreenfootSound wandAttack = new GreenfootSound("shootwand.mp3");
     GreenfootImage wand = new GreenfootImage("images/wand.png");
     private static String shootKey = "d";
     private SimpleTimer cooldownTimer = new SimpleTimer();
@@ -29,7 +30,8 @@ public class Wand extends Actor
             }
             else {
               shoot();
-                world.decreaseMana();  
+              wandAttack.play();
+              world.decreaseMana();  
             }
         }
     }

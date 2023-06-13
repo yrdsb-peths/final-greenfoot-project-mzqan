@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MagicAttack extends SmoothMover
 {
+    GreenfootSound death = new GreenfootSound("enemydeath.mp3");
+    GreenfootSound collectMagic = new GreenfootSound("magic.mp3");
     GreenfootImage[] attack = new GreenfootImage[20];
     SimpleTimer animationTimer = new SimpleTimer();
     
@@ -47,6 +49,7 @@ public class MagicAttack extends SmoothMover
     
     public void kill(){
         if(isTouching(Skeleton.class)) {  
+            death.play();
             removeTouching(Skeleton.class);
             GameWorld world = (GameWorld) getWorld();
             world.spawnSkeleton();
@@ -56,9 +59,10 @@ public class MagicAttack extends SmoothMover
     
     public void gainMP(){
        if(isTouching(Magic.class)) {  
-            removeTouching(Magic.class);
-            GameWorld world = (GameWorld) getWorld();
-            world.increaseMana();
+           collectMagic.play(); 
+           removeTouching(Magic.class);
+           GameWorld world = (GameWorld) getWorld();
+           world.increaseMana();
         } 
     }
 }
