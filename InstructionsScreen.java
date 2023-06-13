@@ -23,7 +23,7 @@ public class InstructionsScreen extends World
     
     public void prepare() {
         for(int i=0; i<3;i++) {
-            instructions[i] = new GreenfootImage("images/howtoplay" + (i+1) + ".png");
+            instructions[i] = new GreenfootImage("images/howtoplay" + (i+1) + ".jpg");
             instructions[i].scale(600,400);
         }
         
@@ -41,6 +41,7 @@ public class InstructionsScreen extends World
             currentScreen--;
         }
         else {
+            currentScreen=0;
             World titlescreen = new TitleScreen();
             Greenfoot.setWorld(titlescreen);
         }
@@ -51,6 +52,7 @@ public class InstructionsScreen extends World
             currentScreen++;
         }
         else {
+            currentScreen=0;
             World titlescreen = new TitleScreen();
             Greenfoot.setWorld(titlescreen);
         }
