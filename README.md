@@ -1,5 +1,5 @@
 ## Wizard's Quest 🧙
-Wizard's Quest is game where you become as wizard. Your objective is to kill as many of the falling enemies as you can, while also capturing falling magic orbs for mana. Be sure to pay attention to your mana, each attack uses 1MP. With every 10 points you score, the game increases in difficulty. Try your best to not let any enemy touch the ground, or it will be game over!
+Wizard's Quest is game where you become as wizard! Your objective is to kill as many of the falling enemies as you can, while also capturing falling magic orbs for mana. Be sure to pay attention to your mana, each attack uses 1MP. With every 10 points you score, the game increases in difficulty. Try your best to not let any enemy touch the ground, or it will be game over!
 
 ## Scoring
 - Skeletons: 1 point
