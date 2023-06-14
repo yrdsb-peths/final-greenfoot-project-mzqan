@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PlayButton extends Actor
 {
-    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3"); //Sound for the button click
     GreenfootImage play = new GreenfootImage("images/newgame0.png"); //Image for the play button.
     GreenfootImage playHovered = new GreenfootImage("images/newgame1.png"); //Image for the play button when hovered.
     
@@ -17,7 +17,7 @@ public class PlayButton extends Actor
      * Sets the initial image of the button.
      */
     public PlayButton() {
-        setImage(play); //Set initial image to play.
+        setImage(play); 
     }
     
     /**
@@ -35,7 +35,7 @@ public class PlayButton extends Actor
         }
         if (Greenfoot.mouseClicked(this))
         {
-            buttonClick.play();
+            buttonClick.play(); //Plays button click sound
             setImage(playHovered);
             Greenfoot.delay(10);
             World gameWorld = new GameWorld();

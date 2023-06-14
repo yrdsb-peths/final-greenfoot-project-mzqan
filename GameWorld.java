@@ -12,11 +12,11 @@ public class GameWorld extends World
     private SimpleTimer respawnZombieTimer = new SimpleTimer();// Timer for respawning zombies
     private boolean canSpawnMagic = true; // Flag to track magic spawning 
     private boolean canSpawnZombie = true; //Flag to track zombie spawning
-    private int mana = 25; //Initial manal value
-    private static int score = 0;
+    private static int score = 0; 
     private static int highscore =0;
     private static int level = 1;
     private int trackerLevel = 0;
+    private int mana = 25; //Initial manal value
     Label manabarPoints = new Label("MP: " + mana +"/100", 23); //Label to display mana
     Label scoreLabel = new Label("Score: " + score, 23); //Label to display currentscore
     Label highScoreLabel = new Label("High Score: " + highscore, 23); //Label to display highscore
@@ -136,7 +136,7 @@ public class GameWorld extends World
      * End the game and switch to game over screen.
      */
     public void gameOver(){
-        
+        level = 0;
         World gameOverWorld = new GameOverScreen();
         Greenfoot.setWorld(gameOverWorld); 
     }

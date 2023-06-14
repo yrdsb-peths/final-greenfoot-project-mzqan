@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class NextButton here.
+ * A button: Player clicks it to control the InstructionsScreen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan Lee 
+ * @version June 2023
  */
 public class NextButton extends Actor
 {
-    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
-    GreenfootImage next = new GreenfootImage("images/next0.png"); //Image for the instructions button.
-    GreenfootImage nextHovered = new GreenfootImage("images/next1.png"); //Image for the instructions button when hovered.
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3"); //Sound for the button click
+    GreenfootImage next = new GreenfootImage("images/next0.png"); //Image for the next button
+    GreenfootImage nextHovered = new GreenfootImage("images/next1.png"); //Image for the next button when hovered
     
     /**
-     * Constructor for BackToTitleButton.
+     * Constructor for NextButton.
      * Sets the initial image of the button.
      */
     public NextButton() {
@@ -21,9 +21,9 @@ public class NextButton extends Actor
     }
     
     /**
-     * Act method for the BackToTitleButton.
+     * Act method for the NextButton.
      * It handles the image change when the mouse hovers over the button,
-     * and switches to the title screen when the button is clicked.
+     * and switches to the next screen when the button is clicked.
      */
     public void act()
     {
@@ -35,10 +35,10 @@ public class NextButton extends Actor
         }
         if (Greenfoot.mouseClicked(this))
         {
-            buttonClick.play();
+            buttonClick.play(); //Plays button click sound
             setImage(nextHovered);
             Greenfoot.delay(10);
-            InstructionsScreen.switchNext();
+            InstructionsScreen.switchNext(); //Switches forward to next screen
         }
     }
 }

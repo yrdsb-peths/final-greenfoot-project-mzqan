@@ -9,9 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class InstructionsButton extends Actor
 
 {
-    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
-    GreenfootImage instructions = new GreenfootImage("images/instructions0.png"); //Image for the instructions button.
-    GreenfootImage instructionsHovered = new GreenfootImage("images/instructions1.png"); //Image for the instructions button when hovered.
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3"); //Sound for the button click
+    GreenfootImage instructions = new GreenfootImage("images/instructions0.png"); //Image for the instructions button
+    GreenfootImage instructionsHovered = new GreenfootImage("images/instructions1.png"); //Image for the instructions button when hovered
     
     /**
      * Constructor for InstructionsButton.
@@ -36,11 +36,11 @@ public class InstructionsButton extends Actor
         }
         if (Greenfoot.mouseClicked(this))
         {
-            buttonClick.play();
+            buttonClick.play(); //Play button click sound
             setImage(instructionsHovered);
             Greenfoot.delay(10);
-            World instructionsWorld = new InstructionsScreen();
-            Greenfoot.setWorld(instructionsWorld);
+            World instructionsWorld = new InstructionsScreen(); 
+            Greenfoot.setWorld(instructionsWorld); // Switches to instructions screen
         }
     }
 }
