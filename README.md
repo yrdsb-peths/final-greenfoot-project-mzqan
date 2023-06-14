@@ -13,7 +13,7 @@ Wizard's Quest is game where you become as wizard. Your objective is to kill as 
 - Images From:
   - Title & Instructions Screen: https://www.freepik.com/premium-vector/dungeon-with-long-corridor-medieval-castle-corridor-with-torches-doors-with-bars-interior_31176908.htm#query=dungeon%20wall&position=6&from_view=keyword&track=ais
   - Game Screen: https://www.dreamstime.com/cartoon-seamless-pattern-texture-old-crack-grey-brick-wall-vector-background-vector-cartoon-seamless-pattern-texture-old-grey-image106716329
-  - Wand:https://www.pngwing.com/en/free-png-nbmoc
+  - Wand: https://www.pngwing.com/en/free-png-nbmoc
   - Magic Orb: https://www.deviantart.com/venjix5/art/Energy-Orb-redesign-761445149
   - Magic Attack: https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/
   - Skeleton: https://www.istockphoto.com/illustrations/skull-pixel-art
