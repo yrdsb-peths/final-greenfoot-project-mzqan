@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * A button: Player clicks it to go back to title screen.
+ * A button: Player clicks it to go back to title screen (after game over).
  * 
  * @author Megan Lee
  * @version June 2023
@@ -13,30 +13,21 @@ public class BackToTitleButton extends Actor
     GreenfootImage backToTitle = new GreenfootImage("images/backtotitle0.png"); //Image for the instructions button.
     GreenfootImage backToTitleHovered = new GreenfootImage("images/backtotitle1.png"); //Image for the instructions button when hovered.
     
-    /**
-     * Constructor for BackToTitleButton.
-     * Sets the initial image of the button.
-     */
     public BackToTitleButton() {
         setImage(backToTitle);
     }
     
-    /**
-     * Act method for the BackToTitleButton.
-     * It handles the image change when the mouse hovers over the button,
-     * and switches to the title screen when the button is clicked.
-     */
     public void act()
     {
         if (Greenfoot.mouseMoved(this)) {
-            setImage(backToTitleHovered); // Change the image to backToTitleHovered when the mouse moves over button
+            setImage(backToTitleHovered); // Change the image when mouse hovers over button
         }
         if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) {
-            setImage(backToTitle); // Change the image back to backToTitle when the mouse moves away from button
+            setImage(backToTitle); // Change the image back when the mouse moves away from button
         }
         if (Greenfoot.mouseClicked(this))
         {
-            buttonClick.play(); //Play button click sound
+            buttonClick.play(); 
             setImage(backToTitleHovered);
             Greenfoot.delay(10);
             World titlescreen = new TitleScreen();

@@ -9,53 +9,53 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GameWorld extends World
 {
     private SimpleTimer respawnMagicTimer  = new SimpleTimer(); // Timer for respawning magic
-    private SimpleTimer respawnZombieTimer = new SimpleTimer();// Timer for respawning zombies
     private boolean canSpawnMagic = true; // Flag to track magic spawning 
+    
+    private SimpleTimer respawnZombieTimer = new SimpleTimer();// Timer for respawning zombies
     private boolean canSpawnZombie = true; //Flag to track zombie spawning
-    private static int score = 0; 
-    private static int highscore =0;
-    private static int level = 1;
-    private int trackerLevel = 0;
+    
+    private static int score = 0; //Current game score
+    private static int highscore = 0; //All-time highscore
+    
+    private static int level = 0; //Current level
+    
     private int mana = 25; //Initial manal value
+    
     Label manabarPoints = new Label("MP: " + mana +"/100", 23); //Label to display mana
     Label scoreLabel = new Label("Score: " + score, 23); //Label to display currentscore
     Label highScoreLabel = new Label("High Score: " + highscore, 23); //Label to display highscore
 
             
-    /**
-     * Constructor for objects of class GameWorld.
-     * 
-     */
     public GameWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false); 
-        prepare(); //Set up intial state of the game
+        prepare(); 
     }
     
     /**
      * Set up the initial state of the game.
-     * Creates and adds the initial game objects to the world.
+     * Creates and adds the initial game objects to the world
      */
     public void prepare() {
         Wand wand = new Wand();
-        addObject(wand,300,400); // Add wand object to the world
+        addObject(wand,300,400); 
         
         MagicPoints manabar = new MagicPoints(30);
-        addObject(manabar, 115, 35); // Add mana bar to the world
+        addObject(manabar, 115, 35); 
         
-        addObject(manabarPoints, 115, 15); //Add mana label to the world
+        addObject(manabarPoints, 115, 15); 
         
-        addObject(scoreLabel, 520, 15); //Add score label to the world
+        addObject(scoreLabel, 520, 15);
         
-        addObject(highScoreLabel, 499, 35); //Add high score label to the world
+        addObject(highScoreLabel, 499, 35); 
         highScoreLabel.setValue("High Score: " + highscore);
         
         spawnSkeleton(); 
     }
 
     /**
-     * Spawn a skeleton object in the world at a random x-coordinate.
+     * Spawn skeleton from top of screen, at a random x-coordinate.
      */
      public void spawnSkeleton()
     {
@@ -64,27 +64,27 @@ public class GameWorld extends World
     }
     
     /**
-     * Spawn a zombie object in the world at a random x-coordinate.
+     * Spawn zombie from top of screen, at a random x-coordinate.
      */
      public void spawnZombie()
     {
         if (!canSpawnZombie) {
-            return; // If magic cannot be spawned, exit the method
+            return; // If timer has not reached threshold, return
         }
         
+        //If 30s has passed, spawn one zombie & reset timer
         if (getObjects(Zombie.class).isEmpty() && respawnZombieTimer.millisElapsed() >= 30000) {
-            // Only spawn zombie if there are no existing zombie objects in the world
             Zombie zombie = new Zombie();
             addObject(zombie, Greenfoot.getRandomNumber(600), 0);
-            canSpawnMagic = false; // Set the flag to prevent further spawning
-            respawnZombieTimer.mark(); // Reset the timer for the next spawn
+            canSpawnMagic = false;
+            respawnZombieTimer.mark(); 
         }  
     }
     
     /**
      * Spawn a magic object in the world at a random x-coordinate, if allowed.
      * The magic object is only spawned if there are no existing magic objects in the world.
-     * The flag is set to prevent further spawning until the respawn timer reaches a certain threshold.
+     *
      */
     public void spawnMagic() {
         if (!canSpawnMagic) {
@@ -101,8 +101,14 @@ public class GameWorld extends World
     }
     
     /**
-     * Increase the mana by 20, up to a maximum of 100.
-     * If the mana is already at the maximum, the method exits.
+     * Get the current mana value.
+     */
+    public int getMana(){
+        return mana;
+    }
+    
+    /**
+     * Increase the mana by 20, up to a maximum of 100
      */
     public void increaseMana(){
         if (mana == 100) {
@@ -126,13 +132,45 @@ public class GameWorld extends World
     }
     
     /**
-     * Get the current mana value.
+     * Returns score.
      */
-    public int getMana(){
-        return mana;
+    public static int getScore(){
+        return score;
     }
     
-     /**
+    /**
+     * Resets score to 0.
+     */
+    public static void setScore(){
+        score = 0;
+    }
+    
+    /**
+     * Increase score
+     * Check if needed to update highscore
+     */
+    public void increaseScore(int points){
+        score+=points;
+        scoreLabel.setValue("Score: " + score);
+        if (score > highscore) {
+            highscore = score;
+        }
+        highScoreLabel.setValue("High Score: " + highscore);
+        
+        //Every 10 points scored, increase level difficulty
+        if (score % 10 == 0) {
+        level += 1;
+        }
+    }
+    
+    /**
+     * Returns difficulty level.
+     */
+    public static int getLevel(){
+        return level;
+    }
+    
+    /**
      * End the game and switch to game over screen.
      */
     public void gameOver(){
@@ -141,54 +179,23 @@ public class GameWorld extends World
         Greenfoot.setWorld(gameOverWorld); 
     }
     
-    public void increaseScore(int points){
-        score+=points;
-        scoreLabel.setValue("Score: " + score);
-        if (score > highscore) {
-            highscore = score;
-        }
-        highScoreLabel.setValue("High Score: " + highscore);
-        if((score / 10) > trackerLevel) {
-            level+=1;
-            trackerLevel+=1;
-        }
-    }
-    
-    public static int getScore(){
-        return score;
-    }
-    
-    public static void setScore(){
-        score = 0;
-    }
-    
-    public static int getLevel(){
-        return level;
-    }
-
-     /**
-     * Act method for the world.
-     * Called automatically by the Greenfoot framework.
-     * It is responsible for spawning magic objects and resetting the spawn flag after a certain time interval.
-     */
     public void act() {
-        spawnMagic(); //Spawn magic object, if allowed.
-        
-        // Check if enough time has passed for the flag to be reset
+        spawnMagic(); //Spawn magic object, if allowed
+
+        // Check if 15s has passed for the flag to be reset
         if (!canSpawnMagic && respawnMagicTimer.millisElapsed() >= 15000) {
-            canSpawnMagic = true; // Reset the flag to allow spawning
+            canSpawnMagic = true; 
         }
         
-        
-        // Spawn zombie every 30 seconds, starting from 30 seconds into the game
+        // Check if 30s has passed for the flag to be reset
         if (!canSpawnZombie && respawnZombieTimer.millisElapsed() >= 30000) {
-            canSpawnZombie = true; // Reset the flag to allow spawning
+            canSpawnZombie = true;
         }
 
         // Check if it's time to spawn a zombie
         if (canSpawnZombie) {
             spawnZombie();
-            canSpawnZombie = false; // Set the flag to prevent immediate spawning
+            canSpawnZombie = false; 
             respawnZombieTimer.mark(); // Reset the timer for the next spawn
         }
     }

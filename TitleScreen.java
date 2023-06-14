@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Titlescreen: go to new game or instructions
+ * Titlescreen: Play can choose to start new game or view instructions
  * 
  * @author Megan
  * @version June 2023
@@ -15,6 +15,9 @@ public class TitleScreen extends World
         prepare();
     }
     
+    /**
+     * Add buttons to screen
+     */
     public void prepare() {
         PlayButton playBtn = new PlayButton();
         addObject(playBtn, 300, 255);
@@ -23,6 +26,9 @@ public class TitleScreen extends World
         addObject(instructionsBtn, 300, 330);
     }
     
+    /**
+     * Resets game score to 0
+     */
     public void act(){
         GameWorld.setScore();
     }
