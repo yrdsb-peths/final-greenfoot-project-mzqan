@@ -1,44 +1,35 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class NextButton here.
+ * A button: Player clicks it to control/navigate the InstructionsScreen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan Lee 
+ * @version June 2023
  */
 public class NextButton extends Actor
 {
-    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3");
-    GreenfootImage next = new GreenfootImage("images/next0.png"); //Image for the instructions button.
-    GreenfootImage nextHovered = new GreenfootImage("images/next1.png"); //Image for the instructions button when hovered.
+    GreenfootSound buttonClick = new GreenfootSound("buttonclick.mp3"); //Sound for the button click
+    GreenfootImage next = new GreenfootImage("images/next0.png"); //Image for the next button
+    GreenfootImage nextHovered = new GreenfootImage("images/next1.png"); //Image for the next button when hovered
     
-    /**
-     * Constructor for BackToTitleButton.
-     * Sets the initial image of the button.
-     */
     public NextButton() {
         setImage(next);
     }
-    
-    /**
-     * Act method for the BackToTitleButton.
-     * It handles the image change when the mouse hovers over the button,
-     * and switches to the title screen when the button is clicked.
-     */
+        
     public void act()
     {
         if (Greenfoot.mouseMoved(this)) {
-            setImage(nextHovered); // Change the image to backToTitleHovered when the mouse moves over button
+            setImage(nextHovered); // Change the image when mouse hovers over button
         }
         if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)) {
-            setImage(next); // Change the image back to backToTitle when the mouse moves away from button
+            setImage(next); // Change the image back when the mouse moves away from button
         }
         if (Greenfoot.mouseClicked(this))
         {
             buttonClick.play();
             setImage(nextHovered);
             Greenfoot.delay(10);
-            InstructionsScreen.switchNext();
+            InstructionsScreen.switchNext(); //Switches forward to next screen
         }
     }
 }

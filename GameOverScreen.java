@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Game Over Screen.
+ * Game Over Screen: Player can view their recent score, and go back to title screen.
  * 
  * @author Megan Lee
  * @version June 2023
@@ -19,7 +19,9 @@ public class GameOverScreen extends World
         prepare();
     }
     
-    
+    /**
+     * Add buttons, creates label to display score.
+     */
     public void prepare() {
         Label scoreLabel = new Label(GameWorld.getScore(), 35);
         scoreLabel.setFillColor(Color.WHITE);

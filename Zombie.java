@@ -1,32 +1,33 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Zombie here.
+ * An Enemy, a zombie: Danger for our wizard.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Megan Lee
+ * @version June 2023
  */
 public class Zombie extends SmoothMover
 {
-    GreenfootSound death = new GreenfootSound("enemydeath.mp3");
-    GreenfootImage zombie = new GreenfootImage("images/zombie2.png");
-    private double speed;
-    private int zombieHP=2;
-    /**
-     * Act - do whatever the Skeleton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootSound death = new GreenfootSound("enemydeath.mp3"); //Sound for death of enemy
+    GreenfootImage zombie = new GreenfootImage("images/zombie2.png"); //Image of zombie 
+    private double speed; //Speed of falling
+    private int zombieHP=2; //Number of hits needed to "kill"
+   
     public Zombie() {
         setImage(zombie);
         zombie.scale(40,40);
+        zombie.rotate(270);
     }
+    
     public void act(){
+        //With every 10 points scored, increase speed by 0.1
         GameWorld world = (GameWorld) getWorld();
-        speed = 0.5 + (0.1*(world.getLevel()));
-        int x = getX();
-        double y = getY() + speed;
-        setLocation(x, y);
+        speed = 0.75 + (0.1*(world.getLevel()));
         
+        //Zombie falls downwards
+         move(speed);
+        
+        //If skeleton reaches the bottom, remove object and switch to game over screen
         if(getY() >= world.getHeight()) 
         {
             world.removeObject(this);
@@ -35,9 +36,12 @@ public class Zombie extends SmoothMover
         else {
             getShot();
         }
-        
     }
 
+    /**
+     * If shot once, decrease # of hits needed to "kill", play enemy death sound effect
+     * If shot twice, "kill" the zombie, increase score by 5, and play enemy death sound effect
+     */
     public void getShot(){
         if(isTouching(MagicAttack.class)){
             death.play();

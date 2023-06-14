@@ -8,11 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Wand extends Actor
 {
-    GreenfootSound wandAttack = new GreenfootSound("shootwand.mp3");
-    GreenfootImage wand = new GreenfootImage("images/wand.png");
-    private static String shootKey = "d";
-    private SimpleTimer cooldownTimer = new SimpleTimer();
-    private boolean cooldown = true;
+    GreenfootSound wandAttack = new GreenfootSound("shootwand.mp3"); //Sound for shooting the wand
+    GreenfootImage wand = new GreenfootImage("images/wand.png"); //Image of the wand
+    private SimpleTimer cooldownTimer = new SimpleTimer(); //Timer to enforce cooldown
+    private boolean cooldown = true; //Flag to track cooldown
+    private static String shootKey = "d"; //Key used to shoot
      
     public Wand() {
         setImage(wand);
@@ -36,6 +36,9 @@ public class Wand extends Actor
         }
     }
  
+    /**
+     * Set direction of wand using mouse input
+     */
     public void followCursor(){
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(mouse!=null && mouse.getY()<400){
@@ -43,6 +46,10 @@ public class Wand extends Actor
         }
     }
     
+    /**
+     * Shoot magical attack
+     * Reset cooldown timer
+     */
     public void shoot(){
         MagicAttack laser = new MagicAttack(getRotation());
         getWorld().addObject(laser,300,400);
@@ -50,6 +57,9 @@ public class Wand extends Actor
         cooldownTimer.mark();
     }
     
+    /**
+     * If 1s has passed since last shot, reset cooldown
+     */
     public void cooldownTimer(){
         if (cooldownTimer.millisElapsed() > 1000) {
             cooldown = true;
