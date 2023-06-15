@@ -17,6 +17,7 @@ public class Zombie extends SmoothMover
         setImage(zombie);
         zombie.scale(40,40);
         zombie.rotate(270);
+        setRotation(90);
     }
     
     public void act(){
